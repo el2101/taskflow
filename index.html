@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>TaskFlow - Pengatur Tugas</title>
+  </head>
+  
+  <body>
+
+    <div class="app">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">✓</div>
+                <div>
+                    <h2>TaskFlow</h2>
+                    <p>Student Planner</p>
+                </div>
+            </div>
+
+            <nav>
+                <button class="nav-item active">
+                    <span>⌂</span> Dashboard
+                </button>
+
+                <button class="nav-item">
+                    <span>▣</span> Semua Tugas
+                </button>
+
+                <button class="nav-item">
+                    <span>✓</span> Selesai
+                </button>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <p>Atur tugasmu.</p>
+                <small>Kerjakan satu per satu.</small>
+            </div>
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main">
+
+            <!-- HEADER -->
+            <header class="header">
+                <div>
+                    <p class="greeting">Selamat datang 👋</p>
+                    <h1>Dashboard Tugas</h1>
+                    <p class="subtitle">
+                        Kelola tugas dan deadline kamu dengan lebih teratur.
+                    </p>
+                </div>
+
+                <button class="add-btn" onclick="openModal()">
+                    + Tambah Tugas
+                </button>
+            </header>
+
+
+            <!-- STATISTICS -->
+            <section class="stats">
+
+                <div class="stat-card">
+                    <div class="stat-icon">📋</div>
+                    <div>
+                        <p>Total Tugas</p>
+                        <h2 id="totalTasks">0</h2>
+                    </div>
+                </div>
+
+                <div class="stat-card urgent">
+                    <div class="stat-icon">🔴</div>
+                    <div>
+                        <p>Mendesak</p>
+                        <h2 id="urgentTasks">0</h2>
+                    </div>
+                </div>
+
+                <div class="stat-card soon">
+                    <div class="stat-icon">🟡</div>
+                    <div>
+                        <p>Segera</p>
+                        <h2 id="soonTasks">0</h2>
+                    </div>
+                </div>
+
+                <div class="stat-card done">
+                    <div class="stat-icon">✅</div>
+                    <div>
+                        <p>Selesai</p>
+                        <h2 id="completedTasks">0</h2>
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- TASK SECTION -->
+            <section class="task-section">
+
+                <div class="section-header">
+                    <div>
+                        <h2>Tugas Saya</h2>
+                        <p>Daftar tugas yang perlu kamu kerjakan.</p>
+                    </div>
+
+                    <select id="filter" onchange="renderTasks()">
+                        <option value="all">Semua</option>
+                        <option value="active">Belum Selesai</option>
+                        <option value="urgent">Mendesak</option>
+                        <option value="done">Selesai</option>
+                    </select>
+                </div>
+
+
+                <!-- TASK LIST -->
+                <div id="taskList" class="task-list">
+
+                    <!-- Tugas akan muncul melalui JavaScript -->
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- MODAL TAMBAH TUGAS -->
+    <div id="taskModal" class="modal">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <div>
+                    <h2>Tambah Tugas</h2>
+                    <p>Masukkan informasi tugasmu.</p>
+                </div>
+
+                <button class="close-btn" onclick="closeModal()">×</button>
+            </div>
+
+
+            <form id="taskForm">
+
+                <label>
+                    Nama Tugas
+                    <input
+                        type="text"
+                        id="taskName"
+                        placeholder="Contoh: Makalah Biologi"
+                        required
+                    >
+                </label>
+
+
+                <label>
+                    Mata Pelajaran
+                    <input
+                        type="text"
+                        id="subject"
+                        placeholder="Contoh: Biologi"
+                        required
+                    >
+                </label>
+
+
+                <label>
+                    Deadline
+                    <input
+                        type="date"
+                        id="deadline"
+                        required
+                    >
+                </label>
+
+
+                <label>
+                    Prioritas
+                    <select id="priority">
+                        <option value="low">Rendah</option>
+                        <option value="medium" selected>Sedang</option>
+                        <option value="high">Tinggi</option>
+                    </select>
+                </label>
+
+
+                <div class="form-buttons">
+                    <button
+                        type="button"
+                        class="cancel-btn"
+                        onclick="closeModal()"
+                    >
+                        Batal
+                    </button>
+
+                    <button type="submit" class="save-btn">
+                        Tambahkan
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
